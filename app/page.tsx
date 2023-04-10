@@ -1,11 +1,10 @@
-import Logout from "./components/Logout";
+import Header from "./components/Header";
 
 const HomePage = () => {
   return (
-    <>
-      <div>Home Page</div>
-      <Logout />
-    </>
+    <div className="bg-slate-800 text-white h-screen">
+      <Header />
+    </div>
   );
 };
 
