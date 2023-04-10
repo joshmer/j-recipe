@@ -1,9 +1,12 @@
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import Logout from "./components/Logout";
 
 const HomePage = () => {
-  return <div>Home Page</div>;
+  return (
+    <>
+      <div>Home Page</div>
+      <Logout />
+    </>
+  );
 };
 
 export default HomePage;
