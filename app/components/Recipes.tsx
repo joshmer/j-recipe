@@ -48,10 +48,17 @@ const Recipes = () => {
     (async () => {
       setLoading(true);
       const res = await fetchRecipes("burger");
-      setRecipes(res.hits);
+      setRecipes([...res.hits]);
       setLoading(false);
     })();
   }, []);
+
+  const handleRecipeSearch = async (name: string) => {
+    setLoading(true);
+    const res = await fetchRecipes(name);
+    setRecipes([...res.hits]);
+    setLoading(false);
+  };
 
   return (
     <>
@@ -60,9 +67,14 @@ const Recipes = () => {
         <p>Search a recipe of any meal.</p>
       </div>
       <div className="flex justify-center items-center mt-3">
-        <SearchInput />
+        <SearchInput onSearch={handleRecipeSearch} />
       </div>
-      <div className="flex justify-center space-x-3 mt-5">
+      {!loading && recipes.length > 0 && (
+        <h2 className="text-center text-lg font-bold text-white mt-6">
+          {recipes[recipeIndex].recipe.label}
+        </h2>
+      )}
+      <div className="flex justify-center space-x-3 mt-3">
         <Card>
           {!loading && recipes.length > 0 && (
             <div className="flex flex-col space-y-2 overflow-auto">

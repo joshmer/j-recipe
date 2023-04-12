@@ -3,7 +3,7 @@ import Image from "next/image";
 interface Props {
   text: string;
   weight: number;
-  image: string;
+  image: string | null;
 }
 
 const RecipeItem = ({ text, weight, image }: Props) => {
